@@ -1,10 +1,12 @@
 package com.cryptocurrencies.api.infrastructure.in.controllers.models.responses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
+@AllArgsConstructor
 @Data
 public class SimpleCryptocurrencyDto {
 
@@ -13,5 +15,5 @@ public class SimpleCryptocurrencyDto {
     @JsonProperty("current_price")
     private BigDecimal currentPrice;
     @JsonProperty("price_change")
-    private String priceChange;
+    private BigDecimal priceChange;
 }
