@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cryptocurrency {
-
     private String name;
     private String symbol;
     private String description;

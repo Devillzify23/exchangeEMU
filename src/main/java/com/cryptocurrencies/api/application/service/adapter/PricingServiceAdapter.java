@@ -15,6 +15,8 @@ public class PricingServiceAdapter implements PricingServicePort {
     private final CryptocurrencyRepositoryPort repository;
     private final PriceProviderPort priceProvider;
 
+    private final String EUR_CURRENCY = "EUR";
+
     public PricingServiceAdapter(CryptocurrencyRepositoryPort repository, PriceProviderPort priceProvider){
         this.repository = repository;
         this.priceProvider = priceProvider;
@@ -23,7 +25,7 @@ public class PricingServiceAdapter implements PricingServicePort {
     @Override
     public List<Cryptocurrency> getCurrentPricingList() {
         List<Cryptocurrency> result = CryptocurrenciesMemoryPersistence.getAvailableCryptocurrencies();
-        List<Cryptocurrency> cryptoWithPricing = priceProvider.getCurrentCryptoPrices(result);
+        List<Cryptocurrency> cryptoWithPricing = priceProvider.getCurrentCryptoPrices(result,EUR_CURRENCY);
         return cryptoWithPricing;
     }
 }

@@ -38,14 +38,4 @@ public class CryptocurrenciesMemoryPersistence {
     private void populateAvailableCriptos(){ //carga al empezar la lista
         availableCrypto = repository.getCryptocurrenciesList();
     }
-
-
-    private List<String> getSymbols() //mirar esto donde va
-    {
-        List<String> symbols = new ArrayList<>();
-        for(Cryptocurrency c : availableCrypto){
-            symbols.add(c.getSymbol());
-        }
-        return symbols;
-    }
 }
