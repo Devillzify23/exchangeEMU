@@ -9,9 +9,8 @@ import java.util.List;
 @Repository
 public class BinancePriceProviderAdapter implements PriceProviderPort {
 
-
     @Override
     public List<Cryptocurrency> getCurrentCryptoPrices(List<Cryptocurrency> cryptos) {
-        return null;
+        return cryptos;
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -26,8 +27,8 @@ public class PriceController {
         List<Cryptocurrency> cryptocurrencies = service.getCurrentPricingList();
         return new PricingListDto(cryptocurrencies.stream().map(it -> new SimpleCryptocurrencyDto(
                 it.getName(),
-                it.getPricing().getCurrentPrice(),
-                it.getPricing().getPriceChange()
+                new BigDecimal(0),
+                new BigDecimal(0)
         )).collect(Collectors.toList()));
     }
 
