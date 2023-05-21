@@ -9,11 +9,10 @@ import lombok.Data;
 @Entity
 @Data
 @Table(
-        name = "cryptocurrencies"
+        name = "crypto_list"
 )
 public class CryptocurrencyEntity
 {
-
     @Id
     @Column(name = "symbol")
     private String symbol;

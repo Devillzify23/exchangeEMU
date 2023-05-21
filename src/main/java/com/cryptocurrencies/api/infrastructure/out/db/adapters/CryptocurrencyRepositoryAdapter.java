@@ -24,7 +24,7 @@ public class CryptocurrencyRepositoryAdapter implements CryptocurrencyRepository
     }
 
     @Override
-    public List<Cryptocurrency> getCryptocurrenciesList()
+    public List<Cryptocurrency> getCryptocurrenciesList()//Este devuelve la lista de las monedas de la base de datos
     {
         List<CryptocurrencyEntity> dbResult = cryptocurrencyRepository.findAll();
         List<Cryptocurrency> results = dbResult.stream().map(x -> cryptocurrenciesEntityMapper.toDomainEntity(x)).collect(Collectors.toList());
