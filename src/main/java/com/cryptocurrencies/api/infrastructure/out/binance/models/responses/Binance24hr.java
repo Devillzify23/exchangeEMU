@@ -14,7 +14,7 @@ public class Binance24hr
 {
     private String symbol;
     private BigDecimal priceChange;
-    private double priceChangePercent;
+    private BigDecimal priceChangePercent;
     private BigDecimal prevClosePrice;
     private BigDecimal lastPrice;
     private BigDecimal bidPrice;

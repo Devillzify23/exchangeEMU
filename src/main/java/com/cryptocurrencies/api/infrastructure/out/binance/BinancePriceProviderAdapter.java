@@ -7,6 +7,7 @@ import com.cryptocurrencies.api.domain.repository.priceprovider.PriceProviderPor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,13 @@ public class BinancePriceProviderAdapter implements PriceProviderPort {
         {
             for(Binance24hr binanceCrypto : binance24hrs)
             {
-                if(crypto.getSymbol().equals(binanceCrypto.getSymbol()))
+                if(crypto.getSymbol().equals(binanceCrypto.getSymbol().substring(0,3)))
                 {
-                    //todo acabar el metodo este
+                    crypto.setPricing(new Pricing(
+                            binanceCrypto.getLastPrice(),
+                            binanceCrypto.getPriceChangePercent(),
+                            binanceCrypto.getSymbol(),
+                            binanceCrypto.getVolume()));
                 }
             }
         }
