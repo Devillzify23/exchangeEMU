@@ -22,4 +22,7 @@ public class CryptocurrencyEntity
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "maxSupply")
+    private String maxSupply;
 }

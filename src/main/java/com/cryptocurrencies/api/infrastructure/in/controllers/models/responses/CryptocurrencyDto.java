@@ -16,11 +16,12 @@ public class CryptocurrencyDto {
     @JsonProperty("description")
     private String description;
     @JsonProperty("max_supply")
-    private BigDecimal maxSupply;
+    private String maxSupply;
     @JsonProperty("current_supply")
     private BigDecimal currentSupply;
     @JsonProperty("timestamp")
     private LocalDateTime timestamp;
     @JsonProperty("pricing")
     private PricingDto pricing;
+
 }
