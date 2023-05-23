@@ -4,5 +4,4 @@ import com.cryptocurrencies.api.infrastructure.out.db.entities.CryptocurrencyEnt
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CryptocurrencyJpaRepository extends JpaRepository<CryptocurrencyEntity, String> {
-
 }

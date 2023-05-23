@@ -11,11 +11,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Cryptocurrency {
-
     private String name;
     private String symbol;
     private String description;
-    private BigDecimal maxSupply;
+    private String maxSupply;
     private BigDecimal currentSupply;
     private LocalDateTime timestamp;
     private Pricing pricing;

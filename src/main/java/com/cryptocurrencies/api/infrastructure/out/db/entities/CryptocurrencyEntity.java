@@ -4,13 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
+@Data
 @Table(
-        name = "cryptocurrencies"
+        name = "crypto_list"
 )
-public class CryptocurrencyEntity {
-
+public class CryptocurrencyEntity
+{
     @Id
     @Column(name = "symbol")
     private String symbol;
@@ -20,4 +22,7 @@ public class CryptocurrencyEntity {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "maxSupply")
+    private String maxSupply;
 }

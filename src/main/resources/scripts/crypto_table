@@ -1,0 +1,11 @@
+create table crypto_list(
+symbol varchar(10) primary key,
+name varchar(20),
+description text
+);
+
+insert into crypto_list values("BTC","Bitcoin","Bitcoin​ es una moneda digital descentralizada y un sistema de pago​​ sin banco central o administrador único.​​La criptomoneda fue concebida en el año 2008 por una persona o grupo de personas bajo el seudónimo de Satoshi Nakamoto, ​ cuya identidad concreta se desconoce.");
+insert into crypto_list values("ETH","Ethereum","Ethereum es una plataforma de código abierto, que sirve para ejecutar contratos inteligentes. Es programable, lo que significa que los desarrolladores pueden usarlo en la creación de aplicaciones descentralizadas.​​");
+insert into crypto_list values("LTC","Litecoin","Litecoin es una criptomoneda y proyecto de software de código abierto publicado bajo la licencia MIT​ inspirado y prácticamente idéntico en su aspecto técnico​ a Bitcoin.");
+insert into crypto_list values("SOL","Solana","Solana es una plataforma de blockchain de acceso general con funcional de contratos inteligentes. La plataforma tiene su propia criptomoneda SOL.​ La Solana está basada sobre el algoritmo de consenso PoS.​");
+insert into crypto_list values("ADA","Cardano","Cardano es una cadena de bloques de código abierto, así como una plataforma para ejecutar contratos inteligentes y emitir su propia moneda digital, el ada. Cardano fue fundada en 2015 por el cofundador de Ethereum, Charles Hoskinson.");

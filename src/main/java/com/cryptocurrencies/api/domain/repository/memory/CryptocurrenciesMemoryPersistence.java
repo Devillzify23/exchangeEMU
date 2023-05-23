@@ -5,10 +5,12 @@ import com.cryptocurrencies.api.domain.model.Cryptocurrency;
 import com.cryptocurrencies.api.domain.repository.port.CryptocurrencyRepositoryPort;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CryptocurrenciesMemoryPersistence {
 
     private static List<Cryptocurrency> availableCrypto = new ArrayList<>();
@@ -33,7 +35,7 @@ public class CryptocurrenciesMemoryPersistence {
     private CryptocurrencyRepositoryPort repository;
 
     @PostConstruct
-    private void populateAvailableCriptos(){
+    private void populateAvailableCriptos(){ //carga al empezar la lista
         availableCrypto = repository.getCryptocurrenciesList();
     }
 }
