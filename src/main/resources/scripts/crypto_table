@@ -1,11 +1,61 @@
+create database exchange_emu;
+use exchange_emu;
+
+-- creacion tabla cryptos
+
 create table crypto_list(
 symbol varchar(10) primary key,
 name varchar(20),
-description text
+description text,
+max_supply varchar(50)
+);
+-- inserts de las cryptos que vamos a usar
+
+insert into crypto_list values("BTC","Bitcoin","Bitcoin​ es una moneda digital descentralizada y un sistema de pago​​ sin banco central o administrador único.​​La criptomoneda fue concebida en el año 2008 por una persona o grupo de personas bajo el seudónimo de Satoshi Nakamoto, ​ cuya identidad concreta se desconoce.","21000000");
+insert into crypto_list values("ETH","Ethereum","Ethereum es una plataforma de código abierto, que sirve para ejecutar contratos inteligentes. Es programable, lo que significa que los desarrolladores pueden usarlo en la creación de aplicaciones descentralizadas.​​","infinito");
+insert into crypto_list values("LTC","Litecoin","Litecoin es una criptomoneda y proyecto de software de código abierto publicado bajo la licencia MIT​ inspirado y prácticamente idéntico en su aspecto técnico​ a Bitcoin.","84,000,000");
+insert into crypto_list values("SOL","Solana","Solana es una plataforma de blockchain de acceso general con funcional de contratos inteligentes. La plataforma tiene su propia criptomoneda SOL.​ La Solana está basada sobre el algoritmo de consenso PoS.​","infinito");
+insert into crypto_list values("ADA","Cardano","Cardano es una cadena de bloques de código abierto, así como una plataforma para ejecutar contratos inteligentes y emitir su propia moneda digital, el ada. Cardano fue fundada en 2015 por el cofundador de Ethereum, Charles Hoskinson.","45000000000");
+
+-- creacion tabla users
+
+create table users(
+id int primary key auto_increment,
+nombre varchar(50),
+apellido varchar(50),
+cuenta varchar(25),
+password varchar(20),
+apodo varchar(50),
+saldo double
 );
 
-insert into crypto_list values("BTC","Bitcoin","Bitcoin​ es una moneda digital descentralizada y un sistema de pago​​ sin banco central o administrador único.​​La criptomoneda fue concebida en el año 2008 por una persona o grupo de personas bajo el seudónimo de Satoshi Nakamoto, ​ cuya identidad concreta se desconoce.");
-insert into crypto_list values("ETH","Ethereum","Ethereum es una plataforma de código abierto, que sirve para ejecutar contratos inteligentes. Es programable, lo que significa que los desarrolladores pueden usarlo en la creación de aplicaciones descentralizadas.​​");
-insert into crypto_list values("LTC","Litecoin","Litecoin es una criptomoneda y proyecto de software de código abierto publicado bajo la licencia MIT​ inspirado y prácticamente idéntico en su aspecto técnico​ a Bitcoin.");
-insert into crypto_list values("SOL","Solana","Solana es una plataforma de blockchain de acceso general con funcional de contratos inteligentes. La plataforma tiene su propia criptomoneda SOL.​ La Solana está basada sobre el algoritmo de consenso PoS.​");
-insert into crypto_list values("ADA","Cardano","Cardano es una cadena de bloques de código abierto, así como una plataforma para ejecutar contratos inteligentes y emitir su propia moneda digital, el ada. Cardano fue fundada en 2015 por el cofundador de Ethereum, Charles Hoskinson.");
+-- creacion tabla records
+
+create table transaction_history(
+idUser int primary key,
+symbol varchar(10),
+actual_price double,
+amount double,
+op_type char,
+foreign key (idUser) references users(id)
+);
+
+-- insert en users de prueba
+
+insert into users(nombre,apellido,apodo,saldo) values("jose","garcia","tech", 35400.50);
+
+-- insert en record de prueba, para ver si funciona la FK & va bien
+
+insert into transaction_history values(1,"EUR",1233.50,5,'I');
+
+create table wallets(
+idUser int,
+crypto varchar(50),
+funds double,
+constraint PK_wallets primary key (idUser,crypto)
+);
+
+-- insert de wallet
+
+insert into wallets values(1,"ETH",2.150000);
+select * from wallets;
