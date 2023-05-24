@@ -10,8 +10,7 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Binance24hr
-{
+public class Binance24hr {
     private String symbol;
     private BigDecimal priceChange;
     private BigDecimal priceChangePercent;

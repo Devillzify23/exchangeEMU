@@ -11,8 +11,7 @@ import lombok.Data;
 @Table(
         name = "users"
 )
-public class UserEntity
-{
+public class UserEntity {
     @Id
     @Column(name = "id")
     private int id;

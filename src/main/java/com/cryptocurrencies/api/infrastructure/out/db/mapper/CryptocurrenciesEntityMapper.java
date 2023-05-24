@@ -6,5 +6,5 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface CryptocurrenciesEntityMapper {
-     Cryptocurrency toDomainEntity(CryptocurrencyEntity databaseEntity);
+    Cryptocurrency toDomainEntity(CryptocurrencyEntity databaseEntity);
 }

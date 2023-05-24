@@ -10,15 +10,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Repository
-public class CryptocurrencyRepositoryAdapter implements CryptocurrencyRepositoryPort
-{
+public class CryptocurrencyRepositoryAdapter implements CryptocurrencyRepositoryPort {
 
     private final CryptocurrencyJpaRepository cryptocurrencyRepository;
     private final CryptocurrenciesEntityMapper cryptocurrenciesEntityMapper;
 
 
-    public CryptocurrencyRepositoryAdapter(CryptocurrencyJpaRepository cryptocurrencyRepository, CryptocurrenciesEntityMapper cryptocurrenciesEntityMapper)
-    {
+    public CryptocurrencyRepositoryAdapter(CryptocurrencyJpaRepository cryptocurrencyRepository, CryptocurrenciesEntityMapper cryptocurrenciesEntityMapper) {
         this.cryptocurrencyRepository = cryptocurrencyRepository;
         this.cryptocurrenciesEntityMapper = cryptocurrenciesEntityMapper;
     }
