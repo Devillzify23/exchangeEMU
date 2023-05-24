@@ -3,11 +3,9 @@ package com.cryptocurrencies.api.infrastructure.in.controllers;
 import com.cryptocurrencies.api.domain.model.User;
 import com.cryptocurrencies.api.domain.repository.userprovider.UserServicePort;
 import com.cryptocurrencies.api.infrastructure.in.controllers.models.responses.UserDto;
+import com.cryptocurrencies.api.infrastructure.out.db.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -23,4 +21,12 @@ public class UsersController {
 
         return new UserDto(encontrado.getId(), encontrado.getNombre(), encontrado.getApellido(), encontrado.getApodo(), encontrado.getCuenta(), encontrado.getPassword(), encontrado.getSaldo());
     }
+
+    @PostMapping("/register")
+    public String crearUser(@RequestBody User user)
+    {
+        return null;
+    }
+
+
 }

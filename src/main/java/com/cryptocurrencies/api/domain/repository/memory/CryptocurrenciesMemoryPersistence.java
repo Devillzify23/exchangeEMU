@@ -32,7 +32,6 @@ public class CryptocurrenciesMemoryPersistence {
         });
         return clon;
     }
-
     @PostConstruct
     private void populateAvailableCriptos() { //carga al empezar la lista
         availableCrypto = repository.getCryptocurrenciesList();
