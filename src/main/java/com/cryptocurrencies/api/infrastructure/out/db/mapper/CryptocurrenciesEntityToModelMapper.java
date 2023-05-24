@@ -5,6 +5,6 @@ import com.cryptocurrencies.api.infrastructure.out.db.entities.CryptocurrencyEnt
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface CryptocurrenciesEntityMapper {
-     Cryptocurrency toDomainEntity(CryptocurrencyEntity databaseEntity);
+public interface CryptocurrenciesEntityToModelMapper {
+    Cryptocurrency toDomainEntity(CryptocurrencyEntity databaseEntity);
 }

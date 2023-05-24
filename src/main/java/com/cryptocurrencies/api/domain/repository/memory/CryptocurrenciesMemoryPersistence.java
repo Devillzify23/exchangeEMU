@@ -14,11 +14,12 @@ import java.util.List;
 public class CryptocurrenciesMemoryPersistence {
 
     private static List<Cryptocurrency> availableCrypto = new ArrayList<>();
+    @Autowired
+    private CryptocurrencyRepositoryPort repository;
 
-    public static List<Cryptocurrency> getAvailableCryptocurrencies(){
+    public static List<Cryptocurrency> getAvailableCryptocurrencies() {
         List<Cryptocurrency> clon = new ArrayList<>();
-        availableCrypto.forEach(x -> {
-            clon.add(new Cryptocurrency(
+        availableCrypto.forEach(x -> clon.add(new Cryptocurrency(
                 x.getName(),
                 x.getSymbol(),
                 x.getDescription(),
@@ -26,16 +27,11 @@ public class CryptocurrenciesMemoryPersistence {
                 x.getCurrentSupply(),
                 x.getTimestamp(),
                 x.getPricing()
-            ));
-        });
+        )));
         return clon;
     }
-
-    @Autowired
-    private CryptocurrencyRepositoryPort repository;
-
     @PostConstruct
-    private void populateAvailableCriptos(){ //carga al empezar la lista
+    private void populateAvailableCriptos() {
         availableCrypto = repository.getCryptocurrenciesList();
     }
 }

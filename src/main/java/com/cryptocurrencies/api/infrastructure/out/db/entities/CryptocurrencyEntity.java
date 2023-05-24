@@ -11,8 +11,7 @@ import lombok.Data;
 @Table(
         name = "crypto_list"
 )
-public class CryptocurrencyEntity
-{
+public class CryptocurrencyEntity {
     @Id
     @Column(name = "symbol")
     private String symbol;

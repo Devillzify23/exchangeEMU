@@ -9,7 +9,6 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Data
 public class SimpleCryptocurrencyDto {
-
     @JsonProperty("name")
     private String name;
     @JsonProperty("current_price")

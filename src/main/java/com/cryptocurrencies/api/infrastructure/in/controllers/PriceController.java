@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +22,7 @@ public class PriceController {
     protected PricingServicePort service;
 
     @GetMapping()
-    public PricingListDto getCurrentPricingList(){
+    public PricingListDto getCurrentPricingList() {
         List<Cryptocurrency> cryptocurrencies = service.getCurrentPricingList();
         return new PricingListDto(cryptocurrencies.stream().map(it -> new SimpleCryptocurrencyDto(
                 it.getName(),
@@ -33,7 +32,7 @@ public class PriceController {
     }
 
     @GetMapping("/{crypto}")
-    public CryptocurrencyDto getCurrentPricingList(@PathVariable("crypto") String crypto){
-        return null;
+    public CryptocurrencyDto getCurrentPricingList(@PathVariable("crypto") String crypto) {
+        return service.getCryptoFull(crypto);
     }
 }
