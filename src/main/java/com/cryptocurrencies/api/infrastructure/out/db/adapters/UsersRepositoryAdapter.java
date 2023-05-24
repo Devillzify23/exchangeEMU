@@ -4,6 +4,7 @@ import com.cryptocurrencies.api.domain.mapper.UserEntityToModelMapper;
 import com.cryptocurrencies.api.domain.model.User;
 import com.cryptocurrencies.api.domain.repository.userprovider.UserServicePort;
 import com.cryptocurrencies.api.infrastructure.out.db.entities.UserEntity;
+import com.cryptocurrencies.api.infrastructure.out.db.mapper.UserToUserEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -11,12 +12,14 @@ import java.util.Optional;
 @Repository
 public class UsersRepositoryAdapter implements UserServicePort {
     private final UsersJpaRepository usersJpaRepository;
-
     private final UserEntityToModelMapper userToModelMapper;
 
-    public UsersRepositoryAdapter(UsersJpaRepository usersJpaRepository, UserEntityToModelMapper userToModelMapper) {
+    private final UserToUserEntity userToUserEntity;
+
+    public UsersRepositoryAdapter(UsersJpaRepository usersJpaRepository, UserEntityToModelMapper userToModelMapper, UserToUserEntity userToUserEntity) {
         this.usersJpaRepository = usersJpaRepository;
         this.userToModelMapper = userToModelMapper;
+        this.userToUserEntity = userToUserEntity;
     }
 
 
@@ -30,8 +33,18 @@ public class UsersRepositoryAdapter implements UserServicePort {
     }
 
     @Override
-    public UserEntity registerUser(User user) {
-        return null;
+    public void registerUser(User user) throws Exception {
+        Optional<UserEntity> exists = usersJpaRepository.findByCuentaAndPassword(user.getCuenta(),user.getPassword());
+
+        if(exists.isPresent())
+        {
+            throw new Exception("El usuario ya existe");
+        }
+        else
+        {
+            user.setSaldo(50000.0);
+            usersJpaRepository.save(userToUserEntity.userToEntity(user));
+        }
     }
 
 

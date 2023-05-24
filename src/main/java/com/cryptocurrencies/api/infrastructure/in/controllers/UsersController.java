@@ -23,8 +23,9 @@ public class UsersController {
     }
 
     @PostMapping("/register")
-    public String crearUser(@RequestBody User user)
-    {
+    public String crearUser(@RequestBody User user) throws Exception {
+
+        userServicePort.registerUser(user);
         return null;
     }
 
