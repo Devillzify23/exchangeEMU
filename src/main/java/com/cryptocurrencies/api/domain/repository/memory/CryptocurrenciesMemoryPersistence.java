@@ -19,21 +19,19 @@ public class CryptocurrenciesMemoryPersistence {
 
     public static List<Cryptocurrency> getAvailableCryptocurrencies() {
         List<Cryptocurrency> clon = new ArrayList<>();
-        availableCrypto.forEach(x -> {
-            clon.add(new Cryptocurrency(
-                    x.getName(),
-                    x.getSymbol(),
-                    x.getDescription(),
-                    x.getMaxSupply(),
-                    x.getCurrentSupply(),
-                    x.getTimestamp(),
-                    x.getPricing()
-            ));
-        });
+        availableCrypto.forEach(x -> clon.add(new Cryptocurrency(
+                x.getName(),
+                x.getSymbol(),
+                x.getDescription(),
+                x.getMaxSupply(),
+                x.getCurrentSupply(),
+                x.getTimestamp(),
+                x.getPricing()
+        )));
         return clon;
     }
     @PostConstruct
-    private void populateAvailableCriptos() { //carga al empezar la lista
+    private void populateAvailableCriptos() {
         availableCrypto = repository.getCryptocurrenciesList();
     }
 }

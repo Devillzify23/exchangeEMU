@@ -5,7 +5,6 @@ import com.cryptocurrencies.api.domain.port.service.PricingServicePort;
 import com.cryptocurrencies.api.infrastructure.in.controllers.models.responses.CryptocurrencyDto;
 import com.cryptocurrencies.api.infrastructure.in.controllers.models.responses.PricingListDto;
 import com.cryptocurrencies.api.infrastructure.in.controllers.models.responses.SimpleCryptocurrencyDto;
-import com.cryptocurrencies.api.infrastructure.out.db.mapper.CryptoCurrencyToCryptoCurrencyDtoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

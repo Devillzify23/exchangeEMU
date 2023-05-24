@@ -16,9 +16,7 @@ public class PricingServiceAdapter implements PricingServicePort {
 
     private final CryptocurrencyRepositoryPort repository;
     private final PriceProviderPort priceProvider;
-
     private final CryptoCurrencyToCryptoCurrencyDtoMapper cryptoCurrencyToCryptoCurrencyDtoMapper;
-
     private final String EUR_CURRENCY = "EUR";
 
     public PricingServiceAdapter(CryptocurrencyRepositoryPort repository, PriceProviderPort priceProvider, CryptoCurrencyToCryptoCurrencyDtoMapper cryptoCurrencyToCryptoCurrencyDtoMapper) {
@@ -30,8 +28,7 @@ public class PricingServiceAdapter implements PricingServicePort {
     @Override
     public List<Cryptocurrency> getCurrentPricingList() {
         List<Cryptocurrency> result = CryptocurrenciesMemoryPersistence.getAvailableCryptocurrencies();
-        List<Cryptocurrency> cryptoWithPricing = priceProvider.getCurrentCryptoPrices(result, EUR_CURRENCY);
-        return cryptoWithPricing;
+        return priceProvider.getCurrentCryptoPrices(result, EUR_CURRENCY);
     }
 
     @Override
@@ -39,14 +36,11 @@ public class PricingServiceAdapter implements PricingServicePort {
         List<Cryptocurrency> cryptos = getCurrentPricingList();
         Cryptocurrency fullCrypto = new Cryptocurrency();
 
-        for(Cryptocurrency cryptoCurrency : cryptos)
-        {
-            if(cryptoCurrency.getSymbol().equals(crypto))
-            {
+        for (Cryptocurrency cryptoCurrency : cryptos) {
+            if (cryptoCurrency.getSymbol().equals(crypto)) {
                 fullCrypto = cryptoCurrency;
             }
         }
-        CryptocurrencyDto crp = cryptoCurrencyToCryptoCurrencyDtoMapper.cryptoToCryptoDto(fullCrypto);
-        return crp;
+        return cryptoCurrencyToCryptoCurrencyDtoMapper.cryptoToCryptoDto(fullCrypto);
     }
 }
