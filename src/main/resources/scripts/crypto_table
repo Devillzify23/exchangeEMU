@@ -1,3 +1,4 @@
+drop database if exists exchange_emu;
 create database exchange_emu;
 use exchange_emu;
 
@@ -37,16 +38,9 @@ symbol varchar(10),
 actual_price double,
 amount double,
 op_type char,
+transaction_time date,
 foreign key (idUser) references users(id)
 );
-
--- insert en users de prueba
-
-insert into users(nombre,apellido,apodo,saldo) values("jose","garcia","tech", 35400.50);
-
--- insert en record de prueba, para ver si funciona la FK & va bien
-
-insert into transaction_history values(1,"EUR",1233.50,5,'I');
 
 create table wallets(
 idUser int,
@@ -55,7 +49,14 @@ funds double,
 constraint PK_wallets primary key (idUser,crypto)
 );
 
--- insert de wallet
+delimiter $$
 
-insert into wallets values(1,"ETH",2.150000);
-select * from wallets;
+create trigger wallets_user after insert on users
+for each row
+begin
+insert into wallets values(NEW.id,"BTC",0);
+insert into wallets values(NEW.id,"ETH",0);
+insert into wallets values(NEW.id,"LTC",0);
+insert into wallets values(NEW.id,"ADA",0);
+insert into wallets values(NEW.id,"SOL",0);
+end$$
