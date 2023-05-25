@@ -13,7 +13,6 @@ import java.util.Optional;
 public class UsersRepositoryAdapter implements UserServicePort {
     private final UsersJpaRepository usersJpaRepository;
     private final UserEntityToModelMapper userToModelMapper;
-
     private final UserToUserEntity userToUserEntity;
 
     public UsersRepositoryAdapter(UsersJpaRepository usersJpaRepository, UserEntityToModelMapper userToModelMapper, UserToUserEntity userToUserEntity) {
@@ -21,7 +20,6 @@ public class UsersRepositoryAdapter implements UserServicePort {
         this.userToModelMapper = userToModelMapper;
         this.userToUserEntity = userToUserEntity;
     }
-
 
     @Override
     public User getActualUser(String cuenta, String password) {
