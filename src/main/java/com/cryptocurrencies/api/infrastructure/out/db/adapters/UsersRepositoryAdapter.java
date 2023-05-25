@@ -3,6 +3,7 @@ package com.cryptocurrencies.api.infrastructure.out.db.adapters;
 import com.cryptocurrencies.api.domain.mapper.UserEntityToModelMapper;
 import com.cryptocurrencies.api.domain.model.User;
 import com.cryptocurrencies.api.domain.repository.userprovider.UserServicePort;
+import com.cryptocurrencies.api.infrastructure.out.db.adapters.JpaInteface.UsersJpaRepository;
 import com.cryptocurrencies.api.infrastructure.out.db.entities.UserEntity;
 import com.cryptocurrencies.api.infrastructure.out.db.mapper.UserToUserEntity;
 import org.springframework.stereotype.Repository;

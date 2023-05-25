@@ -8,18 +8,21 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "crypto_list")
-public class CryptocurrencyEntity {
+@Table(name = "transaction_history")
+public class TransactionHistoryEntity
+{
     @Id
+    private int idUser;
+
     @Column(name = "symbol")
     private String symbol;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "actual_price")
+    private double actualPrice;
 
-    @Column(name = "description")
-    private String description;
+    @Column(name = "amount")
+    private double amount;
 
-    @Column(name = "maxSupply")
-    private String maxSupply;
+    @Column(name = "op_type")
+    private char opType;
 }

@@ -2,6 +2,7 @@ package com.cryptocurrencies.api.infrastructure.out.db.adapters;
 
 import com.cryptocurrencies.api.domain.model.Cryptocurrency;
 import com.cryptocurrencies.api.domain.repository.port.CryptocurrencyRepositoryPort;
+import com.cryptocurrencies.api.infrastructure.out.db.adapters.JpaInteface.CryptocurrencyJpaRepository;
 import com.cryptocurrencies.api.infrastructure.out.db.entities.CryptocurrencyEntity;
 import com.cryptocurrencies.api.infrastructure.out.db.mapper.CryptocurrenciesEntityToModelMapper;
 import org.springframework.stereotype.Repository;
