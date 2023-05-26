@@ -16,22 +16,16 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
     @Column(name = "nombre")
     private String nombre;
-
     @Column(name = "apellido")
     private String apellido;
-
     @Column(name = "cuenta")
     private String cuenta;
-
     @Column(name = "contra")
     private String contra;
-
     @Column(name = "apodo")
     private String apodo;
-
     @Column(name = "saldo")
     private double saldo;
 }
