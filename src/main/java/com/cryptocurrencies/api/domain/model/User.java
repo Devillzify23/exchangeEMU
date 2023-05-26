@@ -13,6 +13,6 @@ public class User {
     private String apellido;
     private String apodo;
     private String cuenta;
-    private String password;
+    private String contra;
     private Double saldo;
 }

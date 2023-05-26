@@ -13,10 +13,10 @@ public class UsersController {
     private UserServicePort userServicePort;
 
     @GetMapping("/login/{cuenta}/{password}")
-    public UserDto getLogin(@PathVariable("cuenta") String cuenta, @PathVariable("password") String password) {
-        User encontrado = userServicePort.getActualUser(cuenta, password);
+    public UserDto getLogin(@PathVariable("cuenta") String cuenta, @PathVariable("password") String contra) {
+        User encontrado = userServicePort.getActualUser(cuenta, contra);
 
-        return new UserDto(encontrado.getId(), encontrado.getNombre(), encontrado.getApellido(), encontrado.getApodo(), encontrado.getCuenta(), encontrado.getPassword(), encontrado.getSaldo());
+        return new UserDto(encontrado.getId(), encontrado.getNombre(), encontrado.getApellido(), encontrado.getApodo(), encontrado.getCuenta(), encontrado.getContra(), encontrado.getSaldo());
     }
 
     @PostMapping("/register")

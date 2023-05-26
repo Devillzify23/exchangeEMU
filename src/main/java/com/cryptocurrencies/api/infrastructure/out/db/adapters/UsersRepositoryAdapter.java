@@ -25,7 +25,7 @@ public class UsersRepositoryAdapter implements UserServicePort {
 
     @Override
     public User getActualUser(String cuenta, String password) {
-        Optional<UserEntity> user = usersJpaRepository.findByCuentaAndPassword(cuenta, password);
+        Optional<UserEntity> user = usersJpaRepository.findByCuentaAndContra(cuenta, password);
         if (user.isPresent()) {
             return userToModelMapper.toModel(user.get());
         }
@@ -35,7 +35,7 @@ public class UsersRepositoryAdapter implements UserServicePort {
     @Override
     @Transactional
     public void registerUser(User user) throws Exception {
-        Optional<UserEntity> exists = usersJpaRepository.findByCuentaAndPassword(user.getCuenta(),user.getPassword());
+        Optional<UserEntity> exists = usersJpaRepository.findByCuentaAndContra(user.getCuenta(),user.getContra());
 
         if(exists.isPresent())
         {
