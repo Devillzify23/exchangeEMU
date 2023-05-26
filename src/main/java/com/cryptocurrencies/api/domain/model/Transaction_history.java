@@ -4,14 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cryptocurrency {
-    private String name;
+public class Transaction_history {
+    private int idUser;
     private String symbol;
-    private String description;
-    private String maxSupply;
-    private Pricing pricing;
+    private double actualPrice;
+    private double amount;
+    private char opType;
 }

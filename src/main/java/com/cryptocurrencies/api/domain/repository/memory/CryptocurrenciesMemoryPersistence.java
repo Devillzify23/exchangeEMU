@@ -24,8 +24,6 @@ public class CryptocurrenciesMemoryPersistence {
                 x.getSymbol(),
                 x.getDescription(),
                 x.getMaxSupply(),
-                x.getCurrentSupply(),
-                x.getTimestamp(),
                 x.getPricing()
         )));
         return clon;

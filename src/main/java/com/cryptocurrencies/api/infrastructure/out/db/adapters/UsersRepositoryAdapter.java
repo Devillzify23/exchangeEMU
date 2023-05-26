@@ -6,6 +6,7 @@ import com.cryptocurrencies.api.domain.repository.userprovider.UserServicePort;
 import com.cryptocurrencies.api.infrastructure.out.db.adapters.JpaInteface.UsersJpaRepository;
 import com.cryptocurrencies.api.infrastructure.out.db.entities.UserEntity;
 import com.cryptocurrencies.api.infrastructure.out.db.mapper.UserToUserEntity;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -32,6 +33,7 @@ public class UsersRepositoryAdapter implements UserServicePort {
     }
 
     @Override
+    @Transactional
     public void registerUser(User user) throws Exception {
         Optional<UserEntity> exists = usersJpaRepository.findByCuentaAndPassword(user.getCuenta(),user.getPassword());
 
@@ -45,6 +47,4 @@ public class UsersRepositoryAdapter implements UserServicePort {
             usersJpaRepository.save(userToUserEntity.userToEntity(user));
         }
     }
-
-
 }

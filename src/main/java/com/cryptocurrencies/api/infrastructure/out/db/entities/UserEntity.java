@@ -1,9 +1,6 @@
 package com.cryptocurrencies.api.infrastructure.out.db.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 
@@ -13,7 +10,7 @@ import lombok.Data;
 public class UserEntity {
     @Id
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "nombre")
     private String nombre;

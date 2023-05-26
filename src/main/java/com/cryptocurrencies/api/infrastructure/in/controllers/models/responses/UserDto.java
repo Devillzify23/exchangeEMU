@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 public class UserDto {
     @JsonProperty("id")
-    private int id;
+    private Long id;
     @JsonProperty("nombre")
     private String nombre;
     @JsonProperty("apellido")
