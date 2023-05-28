@@ -1,4 +1,4 @@
-package com.cryptocurrencies.api.infrastructure.out.db.mapper;
+package com.cryptocurrencies.api.domain.mapper;
 
 import com.cryptocurrencies.api.domain.model.Cryptocurrency;
 import com.cryptocurrencies.api.infrastructure.in.controllers.models.responses.CryptocurrencyDto;

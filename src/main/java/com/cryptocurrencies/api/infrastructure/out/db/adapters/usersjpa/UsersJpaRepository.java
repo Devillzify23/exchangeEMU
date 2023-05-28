@@ -1,4 +1,4 @@
-package com.cryptocurrencies.api.infrastructure.out.db.adapters.JpaInteface;
+package com.cryptocurrencies.api.infrastructure.out.db.adapters.usersjpa;
 
 import com.cryptocurrencies.api.infrastructure.out.db.entities.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

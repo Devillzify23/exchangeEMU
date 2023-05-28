@@ -15,6 +15,6 @@ import java.io.Serializable;
 public class WalletEntityPK implements Serializable {
     @Column(name = "idUser")
     private long idUser;
-    @Column(name = "crypto")
-    private String crypto;
+    @Column(name = "symbol")
+    private String symbol;
 }

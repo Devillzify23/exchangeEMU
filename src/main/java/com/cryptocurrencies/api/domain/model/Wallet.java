@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Wallet {
     private long idUser;
-    private String crypto;
+    private String symbol;
     private double funds;
 }

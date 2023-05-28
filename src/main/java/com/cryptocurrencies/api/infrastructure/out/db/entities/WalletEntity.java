@@ -9,13 +9,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "wallets")
+@Table(name = "users_wallets")
 public class WalletEntity
 {
-
     @EmbeddedId
     private WalletEntityPK walletEntityPK;
-
     @Column(name = "funds")
     private double funds;
 }

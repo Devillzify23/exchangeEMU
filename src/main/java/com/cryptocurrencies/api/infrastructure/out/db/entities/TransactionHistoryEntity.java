@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -16,17 +18,16 @@ import lombok.NoArgsConstructor;
 public class TransactionHistoryEntity
 {
     @Id
-    private int idUser;
-
+    @Column(name = "idUser")
+    private Long idUser;
     @Column(name = "symbol")
     private String symbol;
-
     @Column(name = "actual_price")
-    private double actualPrice;
-
+    private Double actualPrice;
     @Column(name = "amount")
-    private double amount;
-
+    private Double amount;
     @Column(name = "op_type")
-    private char opType;
+    private Character opType;
+    @Column(name = "transaction_time")
+    private LocalDateTime transactionTime;
 }
