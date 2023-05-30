@@ -14,4 +14,5 @@ public interface WalletMapper
     @Mapping(target = "symbol",source = "walletEntity.walletEntityPK.symbol")
     Wallet walletEntityToModel(WalletEntity walletEntity);
     WalletDto walletModelToWalletDto(Wallet wallet);
+    WalletEntity toEntity(Wallet wallet);
 }

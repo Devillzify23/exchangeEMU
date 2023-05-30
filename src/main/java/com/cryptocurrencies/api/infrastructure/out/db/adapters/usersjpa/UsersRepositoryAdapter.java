@@ -42,4 +42,15 @@ public class UsersRepositoryAdapter implements UserRepositoryPort
         UserEntity persistedEntity = usersJpaRepository.save(userToModelMapper.ToEntity(user));
         return userToModelMapper.toModel(persistedEntity);
     }
+
+    @Override
+    public User updateUser(User user) {
+
+        return userToModelMapper.toModel(usersJpaRepository.save(userToModelMapper.ToEntity(user)));
+    }
+
+    @Override
+    public User getUserById(Long id) {
+        return userToModelMapper.toModel(usersJpaRepository.findById(id).get());
+    }
 }

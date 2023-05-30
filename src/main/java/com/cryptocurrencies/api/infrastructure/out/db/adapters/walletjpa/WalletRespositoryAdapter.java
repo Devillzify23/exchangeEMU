@@ -15,16 +15,33 @@ public class WalletRespositoryAdapter implements WalletRepositoryPort
 {
 
     private final WalletJpaRepository walletJpaRepository;
-    private final WalletMapper walletEntityToModelMapper;
+    private final WalletMapper walletMapper;
     @Override
     public List<Wallet> getAllWallets(Long id) {
-        return walletJpaRepository.findByWalletEntityPKIdUser(id).stream().map(walletEntityToModelMapper::walletEntityToModel).toList();
+        return walletJpaRepository.findByWalletEntityPKIdUser(id).stream().map(walletMapper::walletEntityToModel).toList();
     }
 
     @Override
     public Wallet createNewWallet(Long idUser, String symbol)
     {
         WalletEntity walletEntity = walletJpaRepository.save(new WalletEntity(new WalletEntityPK(idUser,symbol),0));
-        return walletEntityToModelMapper.walletEntityToModel(walletEntity);
+        return walletMapper.walletEntityToModel(walletEntity);
     }
+
+    @Override
+    public Wallet getEspecificWallet(Long id, String symbol) {
+
+        return walletMapper.walletEntityToModel(walletJpaRepository.findByWalletEntityPKIdUserAndWalletEntityPKSymbol(id,symbol));
+    }
+
+    @Override
+    public Wallet updateWallet(Wallet wallet) {
+
+        WalletEntity walletEntity = walletMapper.toEntity(wallet);
+        walletEntity.setWalletEntityPK( new WalletEntityPK(wallet.getIdUser(),wallet.getSymbol()));
+        walletJpaRepository.save(walletEntity);
+        return walletMapper.walletEntityToModel(walletEntity);
+    }
+
+
 }

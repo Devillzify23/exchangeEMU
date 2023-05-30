@@ -7,5 +7,6 @@ import com.cryptocurrencies.api.infrastructure.in.controllers.exception.UserAlre
 public interface UserServicePort {
     User getActualUser(String cuenta, String password);
 
+    User updateUser(User user);
     User registerUser(User user) throws UserAlreadyExsitsException;
 }

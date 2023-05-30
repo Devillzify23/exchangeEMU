@@ -7,25 +7,29 @@ import com.cryptocurrencies.api.domain.repository.memory.CryptocurrenciesMemoryP
 import com.cryptocurrencies.api.domain.repository.userprovider.UserRepositoryPort;
 import com.cryptocurrencies.api.domain.repository.walletprovider.WalletRepositoryPort;
 import com.cryptocurrencies.api.infrastructure.out.db.entities.WalletEntityPK;
+import com.cryptocurrencies.api.infrastructure.out.db.mapper.UserMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class UserServiceAdapter implements UserServicePort
 {
     private final UserRepositoryPort userRepository;
     private final WalletRepositoryPort walletRepositoryPort;
 
-    public UserServiceAdapter(UserRepositoryPort userRepository, WalletRepositoryPort walletRepositoryPort){
-        this.userRepository = userRepository;
-        this.walletRepositoryPort = walletRepositoryPort;
-    }
 
     @Override
     public User getActualUser(String cuenta, String password)
     {
         return userRepository.getActualUser(cuenta, password);
+    }
+
+    @Override
+    public User updateUser(User user) {
+        return userRepository.updateUser(user);
     }
 
     @Override

@@ -8,6 +8,9 @@ import java.util.List;
 public interface WalletRepositoryPort
 {
     List<Wallet> getAllWallets(Long id);
-
     Wallet createNewWallet(Long idUser,String symbol);
+
+    Wallet getEspecificWallet(Long id, String symbol);
+
+    Wallet updateWallet(Wallet wallet);
 }
