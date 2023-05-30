@@ -28,7 +28,7 @@ public class PriceController {
                 it.getName(),
                 it.getPricing().getCurrentPrice(),
                 it.getPricing().getPriceChange()
-        )).collect(Collectors.toList()));
+        )).toList());
     }
 
     @GetMapping("/{crypto}")

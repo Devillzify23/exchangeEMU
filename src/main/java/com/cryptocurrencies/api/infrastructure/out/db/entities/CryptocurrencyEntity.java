@@ -4,13 +4,15 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table(
-        name = "crypto_list"
-)
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "crypto_list")
 public class CryptocurrencyEntity {
     @Id
     @Column(name = "symbol")

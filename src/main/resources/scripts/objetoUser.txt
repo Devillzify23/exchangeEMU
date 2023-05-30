@@ -1,0 +1,7 @@
+{
+    "nombre":"andres",
+    "apellido":"muñoz",
+    "cuenta":"devillz",
+    "contra":"1234",
+    "apodo":"devillzify"
+}

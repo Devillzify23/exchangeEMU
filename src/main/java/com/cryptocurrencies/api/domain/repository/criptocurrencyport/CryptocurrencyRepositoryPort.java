@@ -1,4 +1,4 @@
-package com.cryptocurrencies.api.domain.repository.port;
+package com.cryptocurrencies.api.domain.repository.criptocurrencyport;
 
 import com.cryptocurrencies.api.domain.model.Cryptocurrency;
 

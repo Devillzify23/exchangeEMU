@@ -2,7 +2,7 @@ package com.cryptocurrencies.api.domain.repository.memory;
 
 
 import com.cryptocurrencies.api.domain.model.Cryptocurrency;
-import com.cryptocurrencies.api.domain.repository.port.CryptocurrencyRepositoryPort;
+import com.cryptocurrencies.api.domain.repository.criptocurrencyport.CryptocurrencyRepositoryPort;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -24,8 +24,6 @@ public class CryptocurrenciesMemoryPersistence {
                 x.getSymbol(),
                 x.getDescription(),
                 x.getMaxSupply(),
-                x.getCurrentSupply(),
-                x.getTimestamp(),
                 x.getPricing()
         )));
         return clon;

@@ -1,3 +1,4 @@
+drop database if exists exchange_emu;
 create database exchange_emu;
 use exchange_emu;
 
@@ -24,7 +25,7 @@ id int primary key auto_increment,
 nombre varchar(50),
 apellido varchar(50),
 cuenta varchar(25),
-password varchar(20),
+contra varchar(20),
 apodo varchar(50),
 saldo double
 );
@@ -32,30 +33,25 @@ saldo double
 -- creacion tabla records
 
 create table transaction_history(
-idUser int primary key,
+id_user int primary key,
 symbol varchar(10),
 actual_price double,
 amount double,
 op_type char,
-foreign key (idUser) references users(id)
+transaction_time datetime default now(),
+foreign key (id_user) references users(id)
 );
 
--- insert en users de prueba
-
-insert into users(nombre,apellido,apodo,saldo) values("jose","garcia","tech", 35400.50);
-
--- insert en record de prueba, para ver si funciona la FK & va bien
-
-insert into transaction_history values(1,"EUR",1233.50,5,'I');
-
-create table wallets(
-idUser int,
-crypto varchar(50),
-funds double,
-constraint PK_wallets primary key (idUser,crypto)
+CREATE TABLE users_wallets (
+  id_user INT,
+  symbol VARCHAR(50),
+  funds DOUBLE,
+  CONSTRAINT PK_wallets PRIMARY KEY (id_user, symbol),
+  FOREIGN KEY (id_user) REFERENCES users(id),
+  FOREIGN KEY (symbol) REFERENCES crypto_list(symbol)
 );
 
--- insert de wallet
 
-insert into wallets values(1,"ETH",2.150000);
-select * from wallets;
+
+
+

@@ -1,37 +1,29 @@
 package com.cryptocurrencies.api.infrastructure.out.db.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-
-
+import lombok.NoArgsConstructor;
 @Entity
 @Data
-@Table(
-        name = "users"
-)
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "users")
 public class UserEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
-
+    private Long id;
     @Column(name = "nombre")
     private String nombre;
-
     @Column(name = "apellido")
     private String apellido;
-
     @Column(name = "cuenta")
     private String cuenta;
-
-    @Column(name = "password")
-    private String password;
-
+    @Column(name = "contra")
+    private String contra;
     @Column(name = "apodo")
     private String apodo;
-
     @Column(name = "saldo")
     private double saldo;
 }
