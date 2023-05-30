@@ -10,4 +10,5 @@ public interface PricingServicePort {
     List<Cryptocurrency> getCurrentPricingList();
 
     CryptocurrencyDto getCryptoFull(String crypto);
+
 }

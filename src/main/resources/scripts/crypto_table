@@ -33,7 +33,8 @@ saldo double
 -- creacion tabla records
 
 create table transaction_history(
-id_user int primary key,
+id int primary key auto_increment,
+id_user int,
 symbol varchar(10),
 actual_price double,
 amount double,
@@ -50,8 +51,3 @@ CREATE TABLE users_wallets (
   FOREIGN KEY (id_user) REFERENCES users(id),
   FOREIGN KEY (symbol) REFERENCES crypto_list(symbol)
 );
-
-
-
-
-
