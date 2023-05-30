@@ -6,4 +6,6 @@ import java.util.List;
 public interface TransactionHistoryServicePort
 {
     List<TransactionHistory> getTransactionsById(Long id);
+
+    TransactionHistory saveNewTransaction(TransactionHistory transactionHistory);
 }

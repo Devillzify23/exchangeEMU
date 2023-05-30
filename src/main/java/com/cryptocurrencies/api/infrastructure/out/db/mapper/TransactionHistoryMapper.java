@@ -10,4 +10,6 @@ public interface TransactionHistoryMapper
 {
     TransactionHistory toModel(TransactionHistoryEntity transactionHistoryEntity);
     TransactionHistoryDto toDto(TransactionHistory transactionHistory);
+
+    TransactionHistoryEntity toEntity(TransactionHistory transactionHistory);
 }

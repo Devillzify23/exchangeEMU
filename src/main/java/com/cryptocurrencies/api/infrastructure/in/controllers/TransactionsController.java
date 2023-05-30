@@ -7,10 +7,7 @@ import com.cryptocurrencies.api.infrastructure.in.controllers.models.responses.T
 import com.cryptocurrencies.api.infrastructure.out.db.mapper.TransactionHistoryMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,5 +25,11 @@ public class TransactionsController
     {
         List<TransactionHistory> transactions = service.getTransactionsById(id);
        return transactions.stream().map(x -> transactionHistoryMapper.toDto(x)).toList();
+    }
+
+    @PostMapping("/operation")
+    public TransactionHistoryDto saveNewOperation(@RequestBody TransactionHistory transactionHistory)
+    {
+        return transactionHistoryMapper.toDto(service.saveNewTransaction(transactionHistory));
     }
 }

@@ -20,6 +20,6 @@ public class TransactionHistoryDto
     private Double amount;
     @JsonProperty("opType")
     private Character opType;
-    @JsonProperty("transaction_time")
+    @JsonProperty("transactionTime")
     private Date transactionTime;
 }
