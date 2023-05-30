@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @Data
 public class UserDto {
@@ -20,5 +22,5 @@ public class UserDto {
     @JsonProperty("contra")
     private String contra;
     @JsonProperty("saldo")
-    private double saldo;
+    private BigDecimal saldo;
 }

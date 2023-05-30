@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,5 +16,5 @@ public class User {
     private String apodo;
     private String cuenta;
     private String contra;
-    private Double saldo;
+    private BigDecimal saldo;
 }

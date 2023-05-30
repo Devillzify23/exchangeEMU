@@ -8,6 +8,7 @@ import com.cryptocurrencies.api.infrastructure.out.db.entities.UserEntity;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Repository
@@ -38,7 +39,7 @@ public class UsersRepositoryAdapter implements UserRepositoryPort
         if(userEntity.isPresent()){
             throw new UserAlreadyExsitsException("El usuario ya existe",null);
         }
-        user.setSaldo(initialFunds);
+        user.setSaldo(BigDecimal.valueOf(initialFunds));
         UserEntity persistedEntity = usersJpaRepository.save(userToModelMapper.ToEntity(user));
         return userToModelMapper.toModel(persistedEntity);
     }

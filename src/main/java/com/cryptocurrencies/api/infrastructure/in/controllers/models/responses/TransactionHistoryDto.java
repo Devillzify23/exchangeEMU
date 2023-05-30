@@ -10,6 +10,8 @@ import java.util.Date;
 @Data
 public class TransactionHistoryDto
 {
+    @JsonProperty("id")
+    private Long id;
     @JsonProperty("idUser")
     private Long idUser;
     @JsonProperty("symbol")

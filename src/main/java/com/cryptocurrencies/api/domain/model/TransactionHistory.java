@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class TransactionHistory
 {
+    private Long id;
     private Long idUser;
     private String symbol;
     private double actualPrice;

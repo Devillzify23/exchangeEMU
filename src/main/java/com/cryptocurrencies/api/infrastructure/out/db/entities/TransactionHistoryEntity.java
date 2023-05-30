@@ -1,9 +1,6 @@
 package com.cryptocurrencies.api.infrastructure.out.db.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,6 +15,9 @@ import java.time.LocalDateTime;
 public class TransactionHistoryEntity
 {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
     @Column(name = "idUser")
     private Long idUser;
     @Column(name = "symbol")

@@ -15,6 +15,8 @@ import com.cryptocurrencies.api.infrastructure.out.db.entities.WalletEntityPK;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -38,37 +40,37 @@ public class TransactionHistoryServiceAdapter implements TransactionHistoryServi
         User user = userRepositoryPort.getUserById(transactionHistory.getIdUser());
         Wallet wallet = walletRepositoryPort.getEspecificWallet(transactionHistory.getIdUser(),transactionHistory.getSymbol());
         TransactionHistory entity = null;
-        if(transactionHistory.getOpType() == 'C')
-        {
-            if(user.getSaldo() > transactionHistory.getAmount() * transactionHistory.getActualPrice())
-            {
-                user.setSaldo(user.getSaldo() - transactionHistory.getAmount() * transactionHistory.getActualPrice());
-                wallet.setFunds(wallet.getFunds() + transactionHistory.getAmount());
-                transactionHistory.setTransactionTime(LocalDateTime.now());
-                userRepositoryPort.updateUser(user);
-                walletRepositoryPort.updateWallet(wallet);
-                entity = transactionHistoryRepositoryPort.saveNewTransaction(transactionHistory);
+
+        if(transactionHistory.getAmount() * transactionHistory.getActualPrice() > 5) {
+            if (transactionHistory.getOpType() == 'C') {
+                if (user.getSaldo().doubleValue() > transactionHistory.getAmount() * transactionHistory.getActualPrice()) {
+                    double saldo = (user.getSaldo().doubleValue() - transactionHistory.getAmount() * transactionHistory.getActualPrice());
+                    user.setSaldo(BigDecimal.valueOf(saldo).setScale(2,RoundingMode.CEILING));
+                    wallet.setFunds(wallet.getFunds() + transactionHistory.getAmount());
+                    transactionHistory.setTransactionTime(LocalDateTime.now());
+                    userRepositoryPort.updateUser(user);
+                    walletRepositoryPort.updateWallet(wallet);
+                    entity = transactionHistoryRepositoryPort.saveNewTransaction(transactionHistory);
+                } else {
+                    throw new TransactionError("Saldo insuficiente", null);
+                }
             }
-            else
-            {
-                throw new TransactionError("Saldo insuficiente",null);
+            if (transactionHistory.getOpType() == 'V') {
+                if (wallet.getFunds() > transactionHistory.getAmount()) {
+                    double saldo = (user.getSaldo().doubleValue() + transactionHistory.getActualPrice() * transactionHistory.getAmount());
+                    user.setSaldo(BigDecimal.valueOf(saldo).setScale(2, RoundingMode.CEILING));
+                    wallet.setFunds(wallet.getFunds() - transactionHistory.getAmount());
+                    transactionHistory.setTransactionTime(LocalDateTime.now());
+                    userRepositoryPort.updateUser(user);
+                    walletRepositoryPort.updateWallet(wallet);
+                    entity = transactionHistoryRepositoryPort.saveNewTransaction(transactionHistory);
+                } else {
+                    throw new TransactionError("Saldo insuficiente", null);
+                }
             }
         }
-        if(transactionHistory.getOpType() == 'V')
-        {
-            if(wallet.getFunds() > transactionHistory.getAmount())
-            {
-                user.setSaldo(user.getSaldo() + transactionHistory.getActualPrice() * transactionHistory.getAmount());
-                wallet.setFunds(wallet.getFunds() - transactionHistory.getAmount());
-                transactionHistory.setTransactionTime(LocalDateTime.now());
-                userRepositoryPort.updateUser(user);
-                walletRepositoryPort.updateWallet(wallet);
-                entity = transactionHistoryRepositoryPort.saveNewTransaction(transactionHistory);
-            }
-            else
-            {
-                throw new TransactionError("Saldo insuficiente",null);
-            }
+        else{
+            throw new TransactionError("Cantidad insuficiente", null);
         }
         return entity;
     }
