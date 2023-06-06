@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -15,7 +17,7 @@ public class WalletEntity
     @EmbeddedId
     private WalletEntityPK walletEntityPK;
     @Column(name = "funds")
-    private double funds;
+    private BigDecimal funds;
 }
 
 

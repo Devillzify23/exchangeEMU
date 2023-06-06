@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @AllArgsConstructor
 @Data
 public class WalletDto {
@@ -12,5 +14,5 @@ public class WalletDto {
     @JsonProperty("symbol")
     private String symbol;
     @JsonProperty("funds")
-    private double funds;
+    private BigDecimal funds;
 }

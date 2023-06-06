@@ -7,6 +7,8 @@ import com.cryptocurrencies.api.infrastructure.out.db.entities.WalletEntityPK;
 import com.cryptocurrencies.api.infrastructure.out.db.mapper.WalletMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 @AllArgsConstructor
@@ -24,7 +26,7 @@ public class WalletRespositoryAdapter implements WalletRepositoryPort
     @Override
     public Wallet createNewWallet(Long idUser, String symbol)
     {
-        WalletEntity walletEntity = walletJpaRepository.save(new WalletEntity(new WalletEntityPK(idUser,symbol),0));
+        WalletEntity walletEntity = walletJpaRepository.save(new WalletEntity(new WalletEntityPK(idUser,symbol), BigDecimal.valueOf(0)));
         return walletMapper.walletEntityToModel(walletEntity);
     }
 

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,9 +24,9 @@ public class TransactionHistoryEntity
     @Column(name = "symbol")
     private String symbol;
     @Column(name = "actual_price")
-    private Double actualPrice;
+    private BigDecimal actualPrice;
     @Column(name = "amount")
-    private Double amount;
+    private BigDecimal amount;
     @Column(name = "op_type")
     private Character opType;
     @Column(name = "transaction_time")

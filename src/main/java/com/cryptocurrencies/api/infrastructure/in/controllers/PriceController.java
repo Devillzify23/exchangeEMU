@@ -25,6 +25,7 @@ public class PriceController {
     public PricingListDto getCurrentPricingList() {
         List<Cryptocurrency> cryptocurrencies = service.getCurrentPricingList();
         return new PricingListDto(cryptocurrencies.stream().map(it -> new SimpleCryptocurrencyDto(
+                it.getSymbol(),
                 it.getName(),
                 it.getPricing().getCurrentPrice(),
                 it.getPricing().getPriceChange()

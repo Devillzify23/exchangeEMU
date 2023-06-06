@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -17,9 +18,9 @@ public class TransactionHistoryDto
     @JsonProperty("symbol")
     private String symbol;
     @JsonProperty("actualPrice")
-    private Double actualPrice;
+    private BigDecimal actualPrice;
     @JsonProperty("amount")
-    private Double amount;
+    private BigDecimal amount;
     @JsonProperty("opType")
     private Character opType;
     @JsonProperty("transactionTime")
