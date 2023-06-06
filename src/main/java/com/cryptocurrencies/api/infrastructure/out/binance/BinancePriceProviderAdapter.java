@@ -22,7 +22,7 @@ public class BinancePriceProviderAdapter implements PriceProviderPort {
         List<Binance24hr> binance24hrs = binanceCryptoApiRequest.getFullCryptos(symbolList);
         for (Cryptocurrency crypto : cryptos) {
             for (Binance24hr binanceCrypto : binance24hrs) {
-                if (crypto.getSymbol().equals(binanceCrypto.getSymbol().substring(0, 3))) {
+                if (crypto.getSymbol().equals(binanceCrypto.getSymbol().replaceAll("EUR",""))) {
                     crypto.setPricing(new Pricing(
                             binanceCrypto.getLastPrice(),
                             binanceCrypto.getPriceChangePercent(),
